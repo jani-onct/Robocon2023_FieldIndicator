@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,user-scable=no"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <!-- <link rel="stylesheet" href="reset.css"> -->
+    <link rel="stylesheet" href="FieldIndicator_3_5.css" >	
+    <link rel="apple-touch-icon" sizes="350x350" href="image/allFruits.png">
+    <title>Game 3</title>
+</head>
+<body>
+    <div class="subete">
+        <div class="topStatus">
+            <div class="safetyMargin">
+                safetyMargin:<span id="safetyMargin">0</span>
+                &ensp;
+                differencePoints:<span id="differencePoints">0</span>
+            </div>
+            <div class="ScoreStatus">
+                <div class="ScoreStatus_theoretical_red">
+                    <div class="red-box">
+                        <p>actual</p>
+                        <span id="red-total">0</span>
+                    </div>
+                    <div class="red-box-2">
+                        <p>Theoretical</p>
+                        <span id="red-total-theoretical">0</span>
+                    </div>
+                </div>
+                <div class="perfect-box">
+                    <span id="perfect">
+                        <div class="mixFruits_perfectState_">
+                            <img src="image/allFruits.png">
+                            mixFruits:<span id="mixFruits_perfectState">0</span>
+                        </div>
+                        <div class="grape_perfectState_">
+                            <img src="image/grape.png">
+                            grape:<span id="grape_perfectState">0</span>
+                        </div>
+                        <div class="blueberry_perfectState_">
+                            <img src="image/blueberry.png">
+                            blueberry:<span id="blueberry_perfectState">0</span>
+                        </div>
+                    </span>
+                </div>
+                <div class="ScoreStatus_theoretical_blue">
+                    <div class="blue-box">
+                        <p>actual</p>
+                        <span id="blue-total">0</span>
+                    </div>
+                    <div class="blue-box-2">
+                        <p>Theoretical</p>
+                        <span id="blue-total-theoretical">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p>
+        <div class="FruitsSpotDesu">
+            <div class="FruitsSpot">
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightgreen">10</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="orange">20</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightgreen">10</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightgreen">10</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="orange">20</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightgreen">10</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightblue">40</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="rgb(200, 0, 200)">50</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="gold">70</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightblue">40</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightgreen">10</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="pink">30</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="orange">20</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightgreen">10</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="pink">30</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="orange">20</button>
+            </div>
+
+            <div class="FruitsSpot">
+                <div class="spotNameContainer-L">
+                </div>
+                <div class="CenterZone">CENTER</div>
+                <div class="spotNameContainer-R">
+                </div>
+            </div>
+
+            <div class="FruitsSpot">
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="orange">20</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="pink">30</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightgreen">10</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="orange">20</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="pink">30</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightgreen">10</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightblue">40</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="gold">70</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="rgb(200, 0, 200)">50</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightblue">40</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightgreen">10</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="orange">20</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightgreen">10</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightgreen">10</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="orange">20</button>
+                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightgreen">10</button>
+            </div>
+        </div>
+        </p>
+        
+        <div class="FruitsSpot">
+        <!-- <button class="reset-button" id="reset-button">RESET</button> -->
+            <!-- <div class="img_space"> -->
+            <!-- <image src="image/logo.png" width="10%"></image> -->
+            <!-- </div> -->
+            <div class="reset-button">
+                <!-- <input type="checkbox" id="reset-button"> -->
+                <!-- <img src="image/logo.png" height="90px" /> -->
+                <input type="image" src="image/logo.png" height="90px" id="reset-button">
+                <!-- <label for="reset-button">RESET</label> -->
+                <!-- <label for="reset-button">RESET</label> -->
+            </div>
+            <div class="p-toggle-container">
+                <input type="checkbox" id="toggle-switch-3">
+                <label for="toggle-switch-3">PRIORITY</label>
+            </div>
+            <div class="toggle-container">
+                <input type="checkbox" id="toggle-switch">
+                <label for="toggle-switch">ZONE CHANGE</label>
+            </div>
+            <div class="new-toggle-container">
+                <input type="checkbox" id="toggle-switch-2">
+                <label for="toggle-switch-2">NEW TOGGLE</label>
+            </div>
+        </div>
+    </div>
+    <script src="FieldIndicator_3_5.js"></script>
+</body>
+</html>
