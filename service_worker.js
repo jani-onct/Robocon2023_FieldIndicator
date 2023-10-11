@@ -1,7 +1,9 @@
 // キャッシュファイルの指定
-var CACHE_NAME = 'pwa-sample-caches';
+var CACHE_NAME = 'Robocon2023_FieldIndicator';
 var urlsToCache = [
-    '/poster-keisuke.github.io/',
+    '/jani-onct.github.io/',
+    '/FieldIndicator_3_5.css/',
+    '/FieldIndicator_3_5.js/',
 ];
 
 // インストール処理
