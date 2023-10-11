@@ -1,9 +1,12 @@
 // キャッシュファイルの指定
 var CACHE_NAME = 'Robocon2023_FieldIndicator';
 var urlsToCache = [
-    '/jani-onct.github.io/',
-    '/FieldIndicator_3_5.css/',
-    '/FieldIndicator_3_5.js/',
+    // '/jani-onct.github.io/',
+    // '/FieldIndicator_3_5.css/',
+    // '/FieldIndicator_3_5.js/',
+    '/Robocon2023_FieldIndicator/index.html',
+    '/Robocon2023_FieldIndicator/FieldIndicator_3_5.css',
+    '/Robocon2023_FieldIndicator/FieldIndicator_3_5.js'
 ];
 
 // インストール処理
