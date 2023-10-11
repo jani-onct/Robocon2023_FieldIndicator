@@ -8,6 +8,7 @@
     <!-- <link rel="stylesheet" href="reset.css"> -->
     <link rel="stylesheet" href="FieldIndicator_3_5.css" >	
     <link rel="apple-touch-icon" sizes="350x350" href="image/allFruits.png">
+    <link rel="manifest" href="manifest.json">
     <title>Robocon2023_FieldIndicator</title>
 </head>
 <body>
@@ -33,19 +34,19 @@
                     <span id="perfect">
                         <div class="mixFruits_perfectState_">
                             <!-- <img src="allFruits.png"> -->
-                            <img src="https://github.com/jani-onct/jani-onct.github.io/blob/main/allFruits.png?raw=true">
+                            <img src="/jani-onct.github.io/image/allFruits.png">
                             &ensp;
                             mixFruits:<span id="mixFruits_perfectState">0</span>
                         </div>
                         <div class="grape_perfectState_">
                             <!-- <img src="grape.png"> -->
-                            <img src="https://github.com/jani-onct/jani-onct.github.io/blob/main/grape.png?raw=true">
+                            <img src="/jani-onct.github.io/image/grape.png">
                             &ensp;
                             grape:<span id="grape_perfectState">0</span>
                         </div>
                         <div class="blueberry_perfectState_">
                             <!-- <img src="blueberry.png"> -->
-                            <img src="https://github.com/jani-onct/jani-onct.github.io/blob/main/blueberry.png?raw=true">
+                            <img src="/jani-onct.github.io/image/blueberry.png">
                             &ensp;
                             blueberry:<span id="blueberry_perfectState">0</span>
                         </div>
@@ -122,7 +123,7 @@
                 <!-- <input type="checkbox" id="reset-button"> -->
                 <!-- <img src="image/logo.png" height="90px" /> -->
                 <!-- <input type="image" src="logo.png" height="90px" id="reset-button"> -->
-                <input type="image" src="https://github.com/jani-onct/jani-onct.github.io/blob/main/logo.png?raw=true" height="90px" id="reset-button">
+                <input type="image" src="/jani-onct.github.io/image/logo.png" height="90px" id="reset-button">
                 <!-- <label for="reset-button">RESET</label> -->
                 <!-- <label for="reset-button">RESET</label> -->
             </div>
@@ -141,5 +142,15 @@
         </div>
     </div>
     <script src="FieldIndicator_3_5.js"></script>
+    <script>
+        // ServiceWorker登録：https://developers.google.com/web/fundamentals/primers/service-workers/?hl=ja
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').then(function(registration) {
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }).catch(function(err) {
+                console.log('ServiceWorker registration failed: ', err);
+            });
+        }
+        </script>
 </body>
 </html>
