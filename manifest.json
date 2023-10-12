@@ -5,8 +5,13 @@
     "start_url": "index.html",
     "icons": [
         {
-            "src": "",
+            "src": "https://github.com/jani-onct/Robocon2023_FieldIndicator/blob/PWA/image/allFruits_192.png?raw=true",
             "sizes": "192x192",
+            "type": "image/jpg"
+        },
+        {
+            "src": "https://github.com/jani-onct/Robocon2023_FieldIndicator/blob/PWA/image/allFruits_512.png?raw=true",
+            "sizes": "512x512",
             "type": "image/jpg"
         }
     ]
