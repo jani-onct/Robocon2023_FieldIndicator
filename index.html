@@ -1,156 +1,320 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <!-- <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,user-scable=no"> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    <!-- <link rel="stylesheet" href="reset.css"> -->
-    <link rel="stylesheet" href="FieldIndicator_3_5.css" >	
-    <link rel="apple-touch-icon" sizes="350x350" href="image/allFruits.png">
-    <link rel="manifest" href="manifest.json">
-    <title>Robocon2023_FieldIndicator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>TUT_RC</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="TUT_RC.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="theme-color" content="#000000">
+  <style>
+    html {
+      overflow-x: hidden;
+    }
+    body {
+      margin-left: 0;
+      margin-right: 0;
+      overflow-x: hidden;
+      font-family: sans-serif;
+      text-align: center;
+      margin: 0px;
+      padding: 0;
+      width: 100vw;
+      max-width: 100vw;
+    }
+    #timer {
+      font-size: 48px;
+      margin: 20px auto;
+      background-color: black;
+      color: white;
+      padding: 10px;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    #scoreboard {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 10px auto;
+      width: 100%;
+      max-width: 100%;
+      font-size: 30px;
+      font-weight: bold;
+      position: relative;
+    }
+    .score-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+    }
+    .team-label {
+      width: 100%;
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+      padding: 4px 0;
+      line-height: 1;
+      border: 2px solid;
+      border-radius: 0;
+      margin-bottom: 0;
+      box-sizing: border-box;
+    }
+    .home-label {
+      background-color: red;
+      border-color: red;
+    }
+    .away-label {
+      background-color: blue;
+      border-color: blue;
+    }
+    .score-box {
+      width: 100%;
+      padding: 10px;
+      border: 3px solid;
+      border-radius: 0;
+      background: #000;
+      color: #fff;
+      box-sizing: border-box;
+    }
+    .home-score {
+      border-color: red;
+    }
+    .away-score {
+      border-color: blue;
+    }
+    #controls, .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    button {
+      -webkit-appearance: none;
+      appearance: none;
+      color: black;
+      font-size: 16px;
+      margin: 5px;
+      padding: 10px 15px;
+      flex: 1 1 calc(50% - 20px);
+      min-width: 100px;
+      border-radius: 0;
+    }
+    #lap-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+    #lap-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+      max-width: 400px;
+    }
+    #laps {
+      width: 90%;
+      max-width: 400px;
+      height: 150px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+      font-size: 16px;
+      margin-top: 10px;
+      background: #f9f9f9;
+    }
+    .used {
+      background-color: yellow !important;
+    }
+    @media (min-width: 768px) {
+      button {
+        flex: none;
+        min-width: 120px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="subete">
-        <div class="topStatus">
-            <div class="safetyMargin">
-                safetyMargin:<span id="safetyMargin">0</span>
-                &ensp;
-                differencePoints:<span id="differencePoints">0</span>
-            </div>
-            <div class="ScoreStatus">
-                <div class="ScoreStatus_theoretical_red">
-                    <div class="red-box">
-                        <p>actual</p>
-                        <span id="red-total">0</span>
-                    </div>
-                    <div class="red-box-2">
-                        <p>Theoretical</p>
-                        <span id="red-total-theoretical">0</span>
-                    </div>
-                </div>
-                <div class="perfect-box">
-                    <span id="perfect">
-                        <div class="mixFruits_perfectState_">
-                            <!-- <img src="allFruits.png"> -->
-                            <img src="/jani-onct.github.io/image/allFruits.png">
-                            &ensp;
-                            mixFruits:<span id="mixFruits_perfectState">0</span>
-                        </div>
-                        <div class="grape_perfectState_">
-                            <!-- <img src="grape.png"> -->
-                            <img src="/jani-onct.github.io/image/grape.png">
-                            &ensp;
-                            grape:<span id="grape_perfectState">0</span>
-                        </div>
-                        <div class="blueberry_perfectState_">
-                            <!-- <img src="blueberry.png"> -->
-                            <img src="/jani-onct.github.io/image/blueberry.png">
-                            &ensp;
-                            blueberry:<span id="blueberry_perfectState">0</span>
-                        </div>
-                    </span>
-                </div>
-                <div class="ScoreStatus_theoretical_blue">
-                    <div class="blue-box">
-                        <p>actual</p>
-                        <span id="blue-total">0</span>
-                    </div>
-                    <div class="blue-box-2">
-                        <p>Theoretical</p>
-                        <span id="blue-total-theoretical">0</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <p>
-        <div class="FruitsSpotDesu">
-            <div class="FruitsSpot">
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightgreen">10</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="orange">20</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightgreen">10</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightgreen">10</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="orange">20</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightgreen">10</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightblue">40</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="rgb(200, 0, 200)">50</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="gold">70</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightblue">40</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightgreen">10</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="pink">30</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="orange">20</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightgreen">10</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="pink">30</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="orange">20</button>
-            </div>
-
-            <div class="FruitsSpot">
-                <div class="spotNameContainer-L">
-                </div>
-                <div class="CenterZone">CENTER</div>
-                <div class="spotNameContainer-R">
-                </div>
-            </div>
-
-            <div class="FruitsSpot">
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="orange">20</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="pink">30</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightgreen">10</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="orange">20</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="pink">30</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightgreen">10</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightblue">40</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="gold">70</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="rgb(200, 0, 200)">50</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightblue">40</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightgreen">10</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="orange">20</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightgreen">10</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightgreen">10</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="orange">20</button>
-                <button class="color-button" data-color="white" data-state="0" data-initial-color="lightgreen">10</button>
-            </div>
-        </div>
-        </p>
-        
-        <div class="FruitsSpot">
-        <!-- <button class="reset-button" id="reset-button">RESET</button> -->
-            <!-- <div class="img_space"> -->
-            <!-- <image src="image/logo.png" width="10%"></image> -->
-            <!-- </div> -->
-            <div class="reset-button">
-                <!-- <input type="checkbox" id="reset-button"> -->
-                <!-- <img src="image/logo.png" height="90px" /> -->
-                <!-- <input type="image" src="logo.png" height="90px" id="reset-button"> -->
-                <input type="image" src="/jani-onct.github.io/image/logo.png" height="90px" id="reset-button">
-                <!-- <label for="reset-button">RESET</label> -->
-                <!-- <label for="reset-button">RESET</label> -->
-            </div>
-            <div class="p-toggle-container">
-                <input type="checkbox" id="toggle-switch-3">
-                <label for="toggle-switch-3">PRIORITY</label>
-            </div>
-            <div class="toggle-container">
-                <input type="checkbox" id="toggle-switch">
-                <label for="toggle-switch">ZONE CHANGE</label>
-            </div>
-            <div class="new-toggle-container">
-                <input type="checkbox" id="toggle-switch-2">
-                <label for="toggle-switch-2">NEW TOGGLE</label>
-            </div>
-        </div>
+  <div id="scoreboard">
+    <div class="score-container">
+      <div class="team-label home-label">豊橋</div>
+      <div class="score-box home-score">
+        <span id="homeScore">0</span>
+      </div>
     </div>
-    <script src="FieldIndicator_3_5.js"></script>
-    <script>
-        // ServiceWorker登録：https://developers.google.com/web/fundamentals/primers/service-workers/?hl=ja
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js').then(function(registration) {
-                console.log('ServiceWorker registration successful with scope: ', registration.scope);
-            }).catch(function(err) {
-                console.log('ServiceWorker registration failed: ', err);
-            });
+    <div class="score-container">
+      <div class="team-label away-label">相手</div>
+      <div class="score-box away-score">
+        <span id="awayScore">0</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="timer">00:00.00</div>
+
+  <div id="controls" class="button-group">
+    <button onclick="startTimer()">START</button>
+    <button onclick="stopTimer()">STOP</button>
+    <button onclick="resetTimer()">RESET</button>
+    <button onclick="nextPossession()">NEXT POSSESSION</button>
+  </div>
+
+  <div id="lap-section">
+    <div id="lap-buttons">
+      <div class="button-group">
+        <button onclick="recordLap('パス')">パス</button>
+        <button onclick="recordLap('ドリブル')">ドリブル</button>
+      </div>
+      <div class="button-group">
+        <button onclick="recordLap('C2P')">C2P</button>
+        <button onclick="recordLap('C3P')">C3P</button>
+        <button onclick="recordLap('J2P')">J2P</button>
+        <button onclick="recordLap('J3P')">J3P</button>
+        <button onclick="recordLap('Jdunk')">Jdunk</button>
+      </div>
+      <div class="button-group">
+        <button onclick="recordLap('相手2P')">相手2P</button>
+        <button onclick="recordLap('相手3P')">相手3P</button>
+        <button onclick="recordLap('相手dunk')">相手dunk</button>
+      </div>
+    </div>
+    <button onclick="toggleLaps()" style="margin: 10px auto; padding: 10px 20px; font-size: 16px; display: block;">結果を表示</button>
+    <div id="laps" style="display: none;"></div>
+  </div>
+
+  <button onclick="copyResults()" style="margin: 20px auto; padding: 10px 20px; font-size: 16px; display: block;">結果をコピー</button>
+
+  <script>
+    let startTime, timerInterval;
+    let elapsed = 0;
+    let possessionCount = 1;
+    let isOffense = true;
+    let isNewPossession = true;
+    let homeScore = 0;
+    let awayScore = 0;
+
+    function updateTimerDisplay(time) {
+      const minutes = Math.floor(time / 60000);
+      const seconds = Math.floor((time % 60000) / 1000);
+      const milliseconds = Math.floor((time % 1000) / 10);
+      document.getElementById("timer").textContent =
+        `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}.${String(milliseconds).padStart(2, '0')}`;
+    }
+
+    function updateScores() {
+      document.getElementById("homeScore").textContent = homeScore;
+      document.getElementById("awayScore").textContent = awayScore;
+    }
+
+    function getPointValue(type) {
+      if (type.includes("3P")) return 3;
+      if (type.includes("2P")) return 2;
+      if (type.includes("dunk")) return 7;
+      return 0;
+    }
+
+    function startTimer() {
+      startTime = Date.now() - elapsed;
+      timerInterval = setInterval(() => {
+        elapsed = Date.now() - startTime;
+        updateTimerDisplay(elapsed);
+        if (elapsed >= 20000) {
+          nextPossession();
         }
-        </script>
+      }, 10);
+      document.querySelectorAll('#lap-buttons button').forEach(btn => btn.classList.remove('used'));
+    }
+
+    function stopTimer() {
+      clearInterval(timerInterval);
+      document.querySelectorAll('#lap-buttons button').forEach(btn => btn.classList.remove('used'));
+    }
+
+    function resetTimer() {
+      if (!confirm('本当にリセットしますか？')) return;
+      clearInterval(timerInterval);
+      elapsed = 0;
+      updateTimerDisplay(0);
+      document.getElementById("laps").innerHTML = "";
+      possessionCount = 1;
+      isOffense = true;
+      isNewPossession = true;
+      homeScore = 0;
+      awayScore = 0;
+      updateScores();
+      document.querySelectorAll('#lap-buttons button').forEach(btn => btn.classList.remove('used'));
+    }
+
+    function nextPossession() {
+      clearInterval(timerInterval);
+      elapsed = 0;
+      updateTimerDisplay(0);
+      if (!isOffense) possessionCount++;
+      isOffense = !isOffense;
+      isNewPossession = true;
+      document.querySelectorAll('#lap-buttons button').forEach(btn => btn.classList.remove('used'));
+    }
+
+    function recordLap(type) {
+      const lapTime = document.getElementById("timer").textContent;
+      const lapEntry = document.createElement("div");
+      if (isNewPossession) {
+        const header = document.createElement("div");
+        const phase = isOffense ? '先攻' : '後攻';
+        header.textContent = `--- Possession ${possessionCount} ${phase} ---`;
+        header.style.fontWeight = "bold";
+        header.style.marginTop = "10px";
+        document.getElementById("laps").appendChild(header);
+        isNewPossession = false;
+      }
+      lapEntry.textContent = `${type}: ${lapTime}`;
+      document.getElementById("laps").appendChild(lapEntry);
+      document.querySelectorAll('#lap-buttons button').forEach(btn => {
+        if (btn.textContent === type) {
+          btn.classList.add('used');
+        }
+      });
+      const points = getPointValue(type);
+      if (type.startsWith("相手")) {
+        awayScore += points;
+      } else if (["C3P", "J3P", "C2P", "J2P", "Jdunk"].includes(type)) {
+        homeScore += points;
+      }
+      updateScores();
+    }
+
+    function copyResults() {
+      const text = document.getElementById('laps').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('結果をコピーしました');
+      }).catch(err => {
+        alert('コピーに失敗しました: ' + err);
+      });
+    }
+
+    function toggleLaps() {
+      const laps = document.getElementById('laps');
+      if (laps.style.display === 'none') {
+        laps.style.display = 'block';
+      } else {
+        laps.style.display = 'none';
+      }
+    }
+  </script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js')
+          .then(reg => console.log('SW registered:', reg))
+          .catch(err => console.error('SW registration failed:', err));
+      });
+    }
+  </script>
 </body>
 </html>
