@@ -8,7 +8,8 @@
     <!-- <link rel="stylesheet" href="reset.css"> -->
     <link rel="stylesheet" href="FieldIndicator_3_5.css" >	
     <link rel="apple-touch-icon" sizes="350x350" href="images/Robocon2023_logo.png">
-    <title>Robocon2023_FieldIndicator</title>
+    <link rel="manifest" href="manifest.json">
+    <title>Robocon2023</title>
 </head>
 <body>
     <div class="subete">
@@ -136,6 +137,16 @@
             </div>
         </div>
     </div>
-    <script src="FieldIndicator_3_5.js"></script>
+    <script src="FieldIndicator_3_5.js">
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then((registration) => {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, (err) => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
 </body>
 </html>
